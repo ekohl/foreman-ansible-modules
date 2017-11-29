@@ -1,15 +1,16 @@
 #!/usr/bin/env python
 
+import json
 import os
 import sys
-import vcr
-import json
 
-VCR_PARAMS_FILE = '../../.vcr_params.json'
+import vcr
 
 # Remove the name of the wrapper from argv
 # (to make it look like the module had been called directly)
 sys.argv.pop(0)
+
+VCR_PARAMS_FILE = os.environ['FOREMAN_ANSIBLE_VCR_PARAMS']
 
 # Load recording parameters from file
 with open(VCR_PARAMS_FILE, 'r') as params_file:
